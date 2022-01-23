@@ -1,0 +1,16 @@
+{
+  "name": "cryptoseals-summoners-subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ executionreverted/cryptoseals-summoners-subgraph",
+    "create-local": "graph create --node http://localhost:8020/ executionreverted/cryptoseals-summoners-subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ executionreverted/cryptoseals-summoners-subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 executionreverted/cryptoseals-summoners-subgraph"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.25.3",
+    "@graphprotocol/graph-ts": "0.24.1"
+  }
+}

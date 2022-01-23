@@ -1,0 +1,284 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CryptoSealsSummoners
+    network: fuji
+    source:
+      address: "0x7a1cEF3D03f433cC11d1CCEda1115d6C30d5Fb64"
+      abi: CryptoSealsSummoners
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      entities:
+        - BoostedRitual
+        - LevelUp
+        - Ritual
+        - Summoner
+        - Transfer
+        - EquipSeal
+        - EquipTreasure
+        - EquipPet
+        - NameSummoner
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: CryptoSealsSummoners
+          file: ./abis/CryptoSealsSummoners.json
+        - name: ERC721
+          file: ./abis/ERC721.json
+        - name: CryptoSealsAvatar
+          file: ./abis/CryptoSealsAvatar.json
+      eventHandlers:
+        - event: BoostedRitual(uint256,uint256)
+          handler: handleBoostedRitual
+        - event: LevelUp(indexed address,uint256,uint256)
+          handler: handleLevelUp
+        - event: Ritual(uint256,uint256)
+          handler: handleRitual
+        - event: Summoner(indexed address,uint256,uint256)
+          handler: handleSummoner
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: EquipPet(uint256,address,uint256)
+          handler: handlePet
+        - event: EquipSeal(uint256,uint256)
+          handler: handleSeal
+        - event: EquipTreasure(uint256,uint256)
+          handler: handleTreasure
+        - event: NameSummoner(uint256,string,string)
+          handler: handleNameSummoner
+      file: ./src/summoner.ts
+  - kind: ethereum
+    name: CryptoSealsSummonersWorldBoss
+    network: fuji
+    source:
+      address: "0x70Bd31275581236422c4D441081B3D354ff150e4"
+      abi: CryptoSealsSummonersWorldBoss
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: CryptoSealsSummonersWorldBoss
+          file: ./abis/CryptoSealsSummonersWorldBoss.json
+        - name: ERC721
+          file: ./abis/ERC721.json
+      entities:
+        - Attack
+        - BossCreated
+        - BossReqUpdated
+        - BossRewUpdated
+        - BossUpdated
+        - LastHit
+      eventHandlers:
+        - event: Attack(indexed uint256,indexed uint256,uint256,uint256,uint256)
+          handler: handleAttack
+        - event: BossCreated(indexed uint256,(string,uint256,uint256,uint256,uint256,uint256,bool),(uint256,(uint256,uint256,uint256,uint256,uint256,uint256),address,uint256,uint256,address,uint256,uint256),(address,uint256,uint256))
+          handler: handleBossCreated
+        - event: BossReqUpdated(indexed uint256,(uint256,(uint256,uint256,uint256,uint256,uint256,uint256),address,uint256,uint256,address,uint256,uint256))
+          handler: handleBossReqUpdated
+        - event: BossRewUpdated(indexed uint256,(address,uint256,uint256))
+          handler: handleBossRewUpdated
+        - event: BossUpdated(indexed uint256,(string,uint256,uint256,uint256,uint256,uint256,bool))
+          handler: handleBossUpdated
+        - event: LastHit(indexed uint256,uint256)
+          handler: handleLastHit
+      file: ./src/worldboss.ts
+  - kind: ethereum
+    name: CryptoSealsSkills
+    network: fuji
+    source:
+      address: "0x2651246D17101f165698fA7d501D5cDb2d152016"
+      abi: CryptoSealsSkills
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - SkillUpdate
+      abis:
+        - name: CryptoSealsSkills
+          file: ./abis/CryptoSealsSkills.json
+      eventHandlers:
+        - event: SkillUpdate(uint256,uint8[36])
+          handler: handleSkillUpdate
+      file: ./src/skills.ts
+  - kind: ethereum
+    name: CryptoSealsSummonerAttributes
+    network: fuji
+    source:
+      address: "0x5C96E857215dA4a98e1d26D2A346bFf292bb55dF"
+      abi: CryptoSealsSummonerAttributes
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Created
+        - Leveled
+        - Reset
+      abis:
+        - name: CryptoSealsSummonerAttributes
+          file: ./abis/CryptoSealsSummonerAttributes.json
+      eventHandlers:
+        - event: Created(indexed address,uint256,uint32,uint32,uint32,uint32,uint32,uint32)
+          handler: handleCreated
+        - event: Leveled(indexed address,uint256,uint32,uint32,uint32,uint32,uint32,uint32)
+          handler: handleLeveled
+        - event: Reset(indexed address,uint256)
+          handler: handleReset
+      file: ./src/attributes.ts
+  - kind: ethereum
+    name: CryptoSealsCraftingI
+    network: fuji
+    source:
+      address: "0xf33806E401B4d5cfE939364956633Ea683081359"
+      abi: CryptoSealsCraftingI
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: CryptoSealsCraftingI
+          file: ./abis/CryptoSealsCraftingI.json
+      entities:
+        - Transfer
+      eventHandlers:
+        - event: Transfer(indexed uint256,indexed uint256,uint256)
+          handler: handleCraftingMaterialTransfer
+      file: ./src/scout.ts
+  - kind: ethereum
+    name: CryptoSealsCraftingCommon
+    network: fuji
+    source:
+      address: "0xC8A2E81fc0E4c273346A9ACF28644bcDaeCB168d"
+      abi: CryptoSealsCraftingCommon
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: CryptoSealsCraftingCommon
+          file: ./abis/CryptoSealsCraftingCommon.json
+      entities:
+        - Crafted
+      eventHandlers:
+        - event: Crafted(indexed address,uint256,uint256,uint256,uint256,uint256,uint256,uint256)
+          handler: handleCrafted
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+
+      file: ./src/craft_common.ts
+  - kind: ethereum
+    name: Essence
+    network: fuji
+    source:
+      address: "0x97b919B2eD7D97961b99913380E59cc67B322A2c"
+      abi: UnwrappedCurrency
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: UnwrappedCurrency
+          file: ./abis/UnwrappedCurrency.json
+      eventHandlers:
+        - event: Transfer(indexed uint256,indexed uint256,uint256)
+          handler: handleEssenceTransfer
+        - event: Burn(indexed uint256,uint256)
+          handler: handleEssenceBurn
+      file: ./src/essence.ts
+  - kind: ethereum
+    name: Gold
+    network: fuji
+    source:
+      address: "0xFffdA15E68f70124Bd842CF6F8cB717aF475232D"
+      abi: UnwrappedCurrency
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: UnwrappedCurrency
+          file: ./abis/UnwrappedCurrency.json
+      entities:
+        - Transfer
+      eventHandlers:
+        - event: Transfer(indexed uint256,indexed uint256,uint256)
+          handler: handleGoldTransfer
+        - event: Burn(indexed uint256,uint256)
+          handler: handleGoldBurn
+
+      file: ./src/gold.ts
+  - kind: ethereum
+    name: WEssence
+    network: fuji
+
+    source:
+      address: "0xb5EC38816561E8b9DB5Ebc957860B341bC8b8e1e"
+      abi: WrappedCurrency
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: WrappedCurrency
+          file: ./abis/WrappedCurrency.json
+      entities:
+        - Transfer
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleWEssenceTransfer
+      file: ./src/wessence.ts
+  - kind: ethereum
+    name: WGold
+    network: fuji
+    source:
+      address: "0xE67374d93878C0FC4C12Fe76dB4DB41A653d635b"
+      abi: WrappedCurrency
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: WrappedCurrency
+          file: ./abis/WrappedCurrency.json
+      entities:
+        - Transfer
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleWGoldTransfer
+      file: ./src/wgold.ts
+  - kind: ethereum
+    name: WMaterial
+    network: fuji
+    source:
+      address: "0xCA2506194312aFeDA9A691f4587C213C80c671Ec"
+      abi: WrappedCurrency
+      startBlock: 5209275
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      abis:
+        - name: WrappedCurrency
+          file: ./abis/WrappedCurrency.json
+      entities:
+        - Transfer
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleWMaterialTransfer
+      file: ./src/wmat.ts

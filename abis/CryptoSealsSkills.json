@@ -1,0 +1,384 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_summoners",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_attributes",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_essence",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8[36]",
+        "name": "skills",
+        "type": "uint8[36]"
+      }
+    ],
+    "name": "SkillUpdate",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "SKILLS_RESET_PRICE",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      }
+    ],
+    "name": "base_per_class",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "base",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8[36]",
+        "name": "_skills",
+        "type": "uint8[36]"
+      }
+    ],
+    "name": "calculate_points_for_set",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "points",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      }
+    ],
+    "name": "class_skills",
+    "outputs": [
+      {
+        "internalType": "bool[36]",
+        "name": "_skills",
+        "type": "bool[36]"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      }
+    ],
+    "name": "class_skills_by_name",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "skill_idx",
+        "type": "uint256"
+      }
+    ],
+    "name": "get_single_skill",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      }
+    ],
+    "name": "get_skills",
+    "outputs": [
+      {
+        "internalType": "uint8[36]",
+        "name": "",
+        "type": "uint8[36]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8[36]",
+        "name": "_skills",
+        "type": "uint8[36]"
+      }
+    ],
+    "name": "is_valid_set",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_attribute",
+        "type": "uint256"
+      }
+    ],
+    "name": "modifier_for_attribute",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "_modifier",
+        "type": "int256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      }
+    ],
+    "name": "reset_skills",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_essence",
+        "type": "address"
+      }
+    ],
+    "name": "setEssenceAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "setResetPrice",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8[36]",
+        "name": "_skills",
+        "type": "uint8[36]"
+      }
+    ],
+    "name": "set_skills",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "skills",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "int256",
+        "name": "_int",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_level",
+        "type": "uint256"
+      }
+    ],
+    "name": "skills_per_level",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "points",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

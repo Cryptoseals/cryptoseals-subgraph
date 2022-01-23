@@ -1,0 +1,1236 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_summoners",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_attr",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_random",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_skills",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_badge",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "abc",
+        "type": "string"
+      }
+    ],
+    "name": "CustomError",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_boss_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_reward",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_damage",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "roll",
+        "type": "uint256"
+      }
+    ],
+    "name": "Attack",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_max_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_armor_class",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_current_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_deadline",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_attack_cooldown",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "_active",
+            "type": "bool"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct CryptoSealsWorldBoss.BOSS",
+        "name": "boss",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "minLevel",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "STR",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "DEX",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CON",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "INT",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "WIS",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CHA",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct CryptoSealsWorldBoss.ATTRIBUTES",
+            "name": "minAttrs",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredItemContract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItemType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItem",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredPet",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkill",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkillLevel",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct CryptoSealsWorldBoss.REQUIREMENT",
+        "name": "requirement",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_token_reward_per_hp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_xp_reward_per_hp",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct CryptoSealsWorldBoss.BOSS_REWARD",
+        "name": "reward",
+        "type": "tuple"
+      }
+    ],
+    "name": "BossCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "minLevel",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "STR",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "DEX",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CON",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "INT",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "WIS",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CHA",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct CryptoSealsWorldBoss.ATTRIBUTES",
+            "name": "minAttrs",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredItemContract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItemType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItem",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredPet",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkill",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkillLevel",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct CryptoSealsWorldBoss.REQUIREMENT",
+        "name": "requirement",
+        "type": "tuple"
+      }
+    ],
+    "name": "BossReqUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_token_reward_per_hp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_xp_reward_per_hp",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct CryptoSealsWorldBoss.BOSS_REWARD",
+        "name": "reward",
+        "type": "tuple"
+      }
+    ],
+    "name": "BossRewUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_max_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_armor_class",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_current_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_deadline",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_attack_cooldown",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "_active",
+            "type": "bool"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct CryptoSealsWorldBoss.BOSS",
+        "name": "boss",
+        "type": "tuple"
+      }
+    ],
+    "name": "BossUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "boss_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "killer",
+        "type": "uint256"
+      }
+    ],
+    "name": "LastHit",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_summoner",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "boss_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "required_item_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "attack",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_str",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_level",
+        "type": "uint256"
+      }
+    ],
+    "name": "attack_bonus",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "",
+        "type": "int256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      }
+    ],
+    "name": "base_attack_bonus_by_class",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "attack",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_class",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_level",
+        "type": "uint256"
+      }
+    ],
+    "name": "base_attack_bonus_by_class_and_level",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "bossRewards",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "_reward_token",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_token_reward_per_hp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_xp_reward_per_hp",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "bosses",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_boss_max_health",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_boss_armor_class",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_boss_current_health",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_boss_deadline",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_attack_cooldown",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_active",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_max_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_armor_class",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_current_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_deadline",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_attack_cooldown",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "_active",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.BOSS",
+        "name": "_boss",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "minLevel",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "STR",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "DEX",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CON",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "INT",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "WIS",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CHA",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct CryptoSealsWorldBoss.ATTRIBUTES",
+            "name": "minAttrs",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredItemContract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItemType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItem",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredPet",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkill",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkillLevel",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.REQUIREMENT",
+        "name": "_requirement",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_token_reward_per_hp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_xp_reward_per_hp",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.BOSS_REWARD",
+        "name": "_rewards",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_minutes",
+        "type": "uint256"
+      }
+    ],
+    "name": "createBoss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_max_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_armor_class",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_current_health",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_boss_deadline",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_attack_cooldown",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "_active",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.BOSS",
+        "name": "_boss",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_minutes",
+        "type": "uint256"
+      }
+    ],
+    "name": "editBoss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "minLevel",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "STR",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "DEX",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CON",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "INT",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "WIS",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "CHA",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct CryptoSealsWorldBoss.ATTRIBUTES",
+            "name": "minAttrs",
+            "type": "tuple"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredItemContract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItemType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredItem",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "requiredPet",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkill",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "requiredSkillLevel",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.REQUIREMENT",
+        "name": "_requirement",
+        "type": "tuple"
+      }
+    ],
+    "name": "editRequirements",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "_reward_token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_token_reward_per_hp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_xp_reward_per_hp",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.BOSS_REWARD",
+        "name": "_rewards",
+        "type": "tuple"
+      }
+    ],
+    "name": "editRewards",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_attribute",
+        "type": "uint256"
+      }
+    ],
+    "name": "modifier_for_attribute",
+    "outputs": [
+      {
+        "internalType": "int256",
+        "name": "_modifier",
+        "type": "int256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "onERC721Received",
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "requirements",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "minLevel",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "STR",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "DEX",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "CON",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "INT",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "WIS",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "CHA",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct CryptoSealsWorldBoss.ATTRIBUTES",
+        "name": "minAttrs",
+        "type": "tuple"
+      },
+      {
+        "internalType": "address",
+        "name": "requiredItemContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "requiredItemType",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "requiredItem",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "requiredPet",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "requiredSkill",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "requiredSkillLevel",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "summonerClaimsPerBoss",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "summonerLastAttackPerBoss",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "int256",
+        "name": "_attack_bonus",
+        "type": "int256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "dungeon_armor_class",
+        "type": "uint256"
+      }
+    ],
+    "name": "to_hit_ac",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "toggleBoss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
