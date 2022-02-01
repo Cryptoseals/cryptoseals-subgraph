@@ -52,8 +52,10 @@ export function handleSummoner(event: Summoner): void {
 export function handleTransfer(event: Transfer): void {
     const summoner = getSummoner(event.params.tokenId.toString());
     summoner.owner = event.params.to as Bytes;
+    summoner.account = event.params.to.toHexString()
     summoner.save()
 }
+
 export function handleNameSummoner(event: NameSummoner): void {
     const summoner = getSummoner(event.params.summoner.toString());
     summoner.name = event.params.name;

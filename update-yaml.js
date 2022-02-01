@@ -1,37 +1,4 @@
-import {BigInt} from '@graphprotocol/graph-ts';
-
-export const W_GOLD_SUMMONER = BigInt.fromString("1234567891011121314151617181921");
-
-export const W_ESSENCE_SUMMONER = BigInt.fromString("1234567891011121314151617181922");
-export const W_MATERIAL_SUMMONER = BigInt.fromString("1234567891011121314151617181923");
-
-export const STATS_ID = "stats";
-
-class ContractsInterface {
-    Random: string;
-    Goods: string;
-    Armor: string;
-    Weapon: string;
-    SkillsCodex: string;
-    Summoners: string;
-    Essence: string;
-    Gold: string;
-    Attributes: string;
-    Avatar: string;
-    Skills: string;
-    CraftI: string;
-    CraftingCommon: string;
-    WrappedGold: string;
-    WrappedEssence: string;
-    WrappedMaterial: string;
-    WorldBoss: string;
-    Badge: string;
-    Guilds: string;
-    Fame: string;
-    Chests: string
-}
-
-export const Contracts: ContractsInterface = {
+const contracts = {
     "Random": "0x746933F2F87a3cFf72543aa2480DeD2f0BD271D2",
     "Goods": "0x1e3b0858C84cde44dE7fd18b5a58C1ffCEc157B0",
     "Armor": "0x20DcFe3d1479D3Af39734C6601C349c0d9ad892B",
@@ -54,3 +21,22 @@ export const Contracts: ContractsInterface = {
     "Fame": "0x9BC5cDfe6a0e286465452127Fb7CE80fC5559dc0",
     "Chests": "0xD504640CEc225bD84b855308b34D10f646B9bf03"
 }
+const fs = require('fs');
+
+const file = fs.readFileSync('./subgraph-template.yaml', {encoding: "utf-8"})
+let content = file.toLocaleString("utf-8");
+content = content.replace(/"address"/g, `"${contracts.Summoners}"`);
+content = content.replace(/address2/g, contracts.WorldBoss);
+content = content.replace(/address3/g, contracts.Skills);
+content = content.replace(/address4/g, contracts.Attributes);
+content = content.replace(/address5/g, contracts.CraftI);
+content = content.replace(/address6/g, contracts.CraftingCommon);
+content = content.replace(/address7/g, contracts.Essence);
+content = content.replace(/address8/g, contracts.Gold);
+content = content.replace(/address9/g, contracts.WrappedEssence);
+content = content.replace(/address10/g, contracts.WrappedGold);
+content = content.replace(/address11/g, contracts.WrappedMaterial);
+content = content.replace(/address12/g, contracts.Fame);
+content = content.replace(/address13/g, contracts.Guilds);
+content = content.replace(/address14/g, contracts.Chests);
+fs.writeFileSync('./subgraph.yaml', content, {encoding: "utf-8"})

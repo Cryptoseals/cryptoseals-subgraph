@@ -21,6 +21,7 @@ export function getSummoner(id: string): Summoner {
         summoner.bossKills = BigInt.fromString("0")
         summoner.craftedMaterialsUsed = BigInt.fromString("0")
         summoner.craftedItems = BigInt.fromString("0")
+        summoner.guild = "0"
     }
     return summoner as Summoner;
 }

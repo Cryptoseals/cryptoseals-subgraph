@@ -1,119 +1,167 @@
 type Summoner @entity {
-  id: ID!
-  owner: Bytes
-  hash: Bytes
-  class_: String!
-  class_id: BigInt!
-  gender: String!
-  level: BigInt!
-  xp: BigInt!
-  log: BigInt!
-  name: String
-  equippedPet: BigInt
-  equippedPetAddress: Bytes
-  equippedSeal: BigInt
-  equippedTreasure: BigInt
-  isPetEquipped: Boolean
-  isSealEquiped: Boolean
-  isTreasureEquipped: Boolean
-  attributes: Attributes
-  spentPoints: BigInt!
-  skills: [BigInt!]
-  goldBalance: BigInt!
-  essenceBalance: BigInt!
-  craftingMaterialBalance: BigInt!
-  bossKills: BigInt!
-  bossDamage: BigInt!
-  craftedMaterialsUsed: BigInt!
-  craftedItems: BigInt!
-}
+    id: ID!
+    owner: Bytes
+    account: Account
+    hash: Bytes
+    class_: String!
+    class_id: BigInt!
+    gender: String!
+    level: BigInt!
+    xp: BigInt!
+    log: BigInt!
+    name: String
+    equippedPet: BigInt
+    equippedPetAddress: Bytes
+    equippedSeal: BigInt
+    equippedTreasure: BigInt
+    isPetEquipped: Boolean
+    isSealEquiped: Boolean
+    isTreasureEquipped: Boolean
+    attributes: Attributes
+    spentPoints: BigInt!
+    skills: [BigInt!]
+    goldBalance: BigInt!
+    essenceBalance: BigInt!
+    craftingMaterialBalance: BigInt!
+    bossKills: BigInt!
+    bossDamage: BigInt!
+    craftedMaterialsUsed: BigInt!
+    craftedItems: BigInt!
+    guild: Guild
+    contribution: Contribution}
 
 type Attributes @entity {
-  id: ID!
-  STR: BigInt
-  DEX: BigInt
-  CON: BigInt
-  INT: BigInt
-  WIS: BigInt
-  CHA: BigInt
+    id: ID!
+    STR: BigInt
+    DEX: BigInt
+    CON: BigInt
+    INT: BigInt
+    WIS: BigInt
+    CHA: BigInt
 }
 
 type Stats @entity {
-  id: ID!
-  essenceSupply: BigInt!
-  goldSupply: BigInt!
-  wEssenceSupply: BigInt!
-  wGoldSupply: BigInt!
-  wMaterialSupply: BigInt!
-  summonerSupply: BigInt!
-  craftingMaterialISupply: BigInt!
+    id: ID!
+    essenceSupply: BigInt!
+    goldSupply: BigInt!
+    wEssenceSupply: BigInt!
+    wGoldSupply: BigInt!
+    wMaterialSupply: BigInt!
+    summonerSupply: BigInt!
+    craftingMaterialISupply: BigInt!
 }
 
 type Account @entity {
-  id: ID!
-  wEssenceBalance: BigInt!
-  wGoldBalance: BigInt!
-  wMaterialBalance: BigInt!
-  summonerBalance: BigInt!
+    id: ID!
+    wEssenceBalance: BigInt!
+    wGoldBalance: BigInt!
+    wMaterialBalance: BigInt!
+    summonerBalance: BigInt!
 }
 
 type CraftedCommonItem @entity {
-  id: ID!
-  base_type: BigInt!
-  item_type: BigInt!
-  creator: BigInt!
-  creationDate: BigInt!
-  owner: Bytes!
+    id: ID!
+    base_type: BigInt!
+    item_type: BigInt!
+    creator: BigInt!
+    creationDate: BigInt!
+    owner: Bytes!
 }
 
 type Activity @entity {
-  id: ID!
-  name: String!
-  summoner: BigInt!
-  date: BigInt!
-  value: BigInt!
+    id: ID!
+    name: String!
+    summoner: BigInt!
+    date: BigInt!
+    value: BigInt!
 }
 
 type Seal @entity {
-  id: ID!
-  equippedBy: BigInt
+    id: ID!
+    equippedBy: BigInt
 }
 type Pet @entity {
-  id: ID!
-  contract: Bytes
-  tokenId: BigInt
-  equippedBy: BigInt
+    id: ID!
+    contract: Bytes
+    tokenId: BigInt
+    equippedBy: BigInt
 }
 
 type Treasure @entity {
-  id: ID!
-  equippedBy: BigInt
+    id: ID!
+    equippedBy: BigInt
 }
 
 type Name @entity {
-  id: ID!
-  ownedBy: BigInt
+    id: ID!
+    ownedBy: BigInt
 }
 
 type Boss @entity {
-  id: ID!
-  _name: String!
-  _boss_max_health: BigInt!
-  _boss_armor_class: BigInt!
-  _boss_current_health: BigInt!
-  _boss_deadline: BigInt!
-  _attack_cooldown: BigInt!
-  _active: Boolean!
-  _reward_token: String!
-  _token_reward_per_hp: String!
-  _xp_reward_per_hp: String!
-  minLevel: BigInt!
-  minAttrs: Attributes
-  requiredItemContract: Bytes
-  requiredItemType: BigInt!
-  requiredItem: BigInt!
-  requiredPet: Bytes!
-  requiredSkill: BigInt!
-  requiredSkillLevel: BigInt!
-  killedBy: BigInt
+    id: ID!
+    _name: String!
+    _boss_max_health: BigInt!
+    _boss_armor_class: BigInt!
+    _boss_current_health: BigInt!
+    _boss_deadline: BigInt!
+    _attack_cooldown: BigInt!
+    _active: Boolean!
+    _reward_token: String!
+    _token_reward_per_hp: String!
+    _xp_reward_per_hp: String!
+    minLevel: BigInt!
+    minAttrs: Attributes
+    requiredItemContract: Bytes
+    requiredItemType: BigInt!
+    requiredItem: BigInt!
+    requiredPet: Bytes!
+    requiredSkill: BigInt!
+    requiredSkillLevel: BigInt!
+    killedBy: BigInt
+}
+
+
+type GuildTreasury @entity {
+    id: ID!
+    goldBalance: BigInt!
+    essenceBalance: BigInt!
+    materialBalance: BigInt!
+}
+
+type Guild @entity {
+    id:ID!
+    name: String!
+    ipfs: String!
+    level: BigInt!
+    leader: Summoner
+    fame: BigInt!
+    admins: [BigInt!]!
+    mods: [BigInt!]!
+    members: [Summoner!]
+    memberCount: BigInt!
+    goldBalance: BigInt!
+    essenceBalance: BigInt!
+    materialBalance: BigInt!
+    description: String
+    image: String
+}
+
+type SummonerGuildApplication @entity {
+    id: ID!
+    appliedTo: [BigInt!]!
+    summoner: Summoner!
+}
+
+type Chest @entity {
+    id: ID!
+    owner: Bytes!
+    chestType: BigInt
+    opened: Boolean
+}
+type Contribution @entity {
+    id: ID!
+    essence: BigInt!
+    gold: BigInt!
+    material: BigInt!
+    guild: Guild
 }

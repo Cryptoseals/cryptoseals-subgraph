@@ -25,6 +25,11 @@
         "internalType": "address",
         "name": "_badge",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_chests",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -72,6 +77,12 @@
         "indexed": false,
         "internalType": "uint256",
         "name": "roll",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chestRoll",
         "type": "uint256"
       }
     ],
@@ -226,6 +237,21 @@
             "internalType": "uint256",
             "name": "_xp_reward_per_hp",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_chest_reward_chance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_chest_contract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "_chestType",
+            "type": "uint8"
           }
         ],
         "indexed": false,
@@ -355,6 +381,21 @@
             "internalType": "uint256",
             "name": "_xp_reward_per_hp",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_chest_reward_chance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_chest_contract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "_chestType",
+            "type": "uint8"
           }
         ],
         "indexed": false,
@@ -579,6 +620,21 @@
         "internalType": "uint256",
         "name": "_xp_reward_per_hp",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_chest_reward_chance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_chest_contract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_chestType",
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",
@@ -772,6 +828,21 @@
             "internalType": "uint256",
             "name": "_xp_reward_per_hp",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_chest_reward_chance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_chest_contract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "_chestType",
+            "type": "uint8"
           }
         ],
         "internalType": "struct CryptoSealsWorldBoss.BOSS_REWARD",
@@ -964,6 +1035,21 @@
             "internalType": "uint256",
             "name": "_xp_reward_per_hp",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_chest_reward_chance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "_chest_contract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "_chestType",
+            "type": "uint8"
           }
         ],
         "internalType": "struct CryptoSealsWorldBoss.BOSS_REWARD",

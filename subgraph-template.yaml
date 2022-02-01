@@ -6,7 +6,7 @@ dataSources:
     name: CryptoSealsSummoners
     network: fuji
     source:
-      address: "0x417DB52EE7e5b57b1E81759D506062725Cd00862"
+      address: "address"
       abi: CryptoSealsSummoners
       startBlock: 5209275
     mapping:
@@ -54,7 +54,7 @@ dataSources:
     name: CryptoSealsSummonersWorldBoss
     network: fuji
     source:
-      address: "0x8a13812E1138496f93b2c18Fd5ac5FD102240F28"
+      address: "address2"
       abi: CryptoSealsSummonersWorldBoss
       startBlock: 5209275
     mapping:
@@ -91,7 +91,7 @@ dataSources:
     name: CryptoSealsSkills
     network: fuji
     source:
-      address: "0x92bd6cb867d540ce08B2729057eC8ee290c82436"
+      address: "address3"
       abi: CryptoSealsSkills
       startBlock: 5209275
     mapping:
@@ -111,7 +111,7 @@ dataSources:
     name: CryptoSealsSummonerAttributes
     network: fuji
     source:
-      address: "0x4f3e051916aEAa1570C593E509aFB3eE7e68a6d7"
+      address: "address4"
       abi: CryptoSealsSummonerAttributes
       startBlock: 5209275
     mapping:
@@ -137,7 +137,7 @@ dataSources:
     name: CryptoSealsCraftingI
     network: fuji
     source:
-      address: "0xfEa04543507A3e98aaF4940eD3Fb778F1f719D28"
+      address: "address5"
       abi: CryptoSealsCraftingI
       startBlock: 5209275
     mapping:
@@ -160,7 +160,7 @@ dataSources:
     name: CryptoSealsCraftingCommon
     network: fuji
     source:
-      address: "0x4e08cACc2E6ed004a7B8433dfA125Ae95378B4b3"
+      address: "address6"
       abi: CryptoSealsCraftingCommon
       startBlock: 5209275
     mapping:
@@ -183,7 +183,7 @@ dataSources:
     name: Essence
     network: fuji
     source:
-      address: "0xA7630Eb91BF2744E7D86D5A8B0De7F9A3314EA49"
+      address: "address7"
       abi: UnwrappedCurrency
       startBlock: 5209275
     mapping:
@@ -205,7 +205,7 @@ dataSources:
     name: Gold
     network: fuji
     source:
-      address: "0xEb8ffB105F7906E738371D65554e744B3f995725"
+      address: "address8"
       abi: UnwrappedCurrency
       startBlock: 5209275
     mapping:
@@ -229,7 +229,7 @@ dataSources:
     network: fuji
 
     source:
-      address: "0x8F97A49DA1F606ce79527e0F3Bc57DdC68929d93"
+      address: "address9"
       abi: WrappedCurrency
       startBlock: 5209275
     mapping:
@@ -249,7 +249,7 @@ dataSources:
     name: WGold
     network: fuji
     source:
-      address: "0x3Bea7c8fc8B3C89aFfA304ad02907257eCa39501"
+      address: "address10"
       abi: WrappedCurrency
       startBlock: 5209275
     mapping:
@@ -269,7 +269,7 @@ dataSources:
     name: WMaterial
     network: fuji
     source:
-      address: "0x1ecf1d6e8B0a9f2f4DAb70645fd3e09AAa413eD6"
+      address: "address11"
       abi: WrappedCurrency
       startBlock: 5209275
     mapping:
@@ -289,7 +289,7 @@ dataSources:
     name: CryptoSealsGuildFame
     network: fuji
     source:
-      address: "0x9BC5cDfe6a0e286465452127Fb7CE80fC5559dc0"
+      address: "address12"
       abi: CryptoSealsGuildFame
       startBlock: 5209275
     mapping:
@@ -312,7 +312,7 @@ dataSources:
     name: CryptoSealsGuilds
     network: fuji
     source:
-      address: "0x52671aF6F0De4a034526005C2d39a9C644Cb51e6"
+      address: "address13"
       abi: CryptoSealsGuilds
       startBlock: 5209275
     mapping:
@@ -361,7 +361,7 @@ dataSources:
     name: CryptoSealsChests
     network: fuji
     source:
-      address: "0xD504640CEc225bD84b855308b34D10f646B9bf03"
+      address: "address14"
       abi: CryptoSealsChests
       startBlock: 5209275
     mapping:
