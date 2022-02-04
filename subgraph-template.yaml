@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "address"
       abi: CryptoSealsSummoners
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       entities:
@@ -56,7 +56,7 @@ dataSources:
     source:
       address: "address2"
       abi: CryptoSealsSummonersWorldBoss
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -93,7 +93,7 @@ dataSources:
     source:
       address: "address3"
       abi: CryptoSealsSkills
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -113,7 +113,7 @@ dataSources:
     source:
       address: "address4"
       abi: CryptoSealsSummonerAttributes
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -139,7 +139,7 @@ dataSources:
     source:
       address: "address5"
       abi: CryptoSealsCraftingI
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -162,7 +162,7 @@ dataSources:
     source:
       address: "address6"
       abi: CryptoSealsCraftingCommon
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -185,7 +185,7 @@ dataSources:
     source:
       address: "address7"
       abi: UnwrappedCurrency
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -207,7 +207,7 @@ dataSources:
     source:
       address: "address8"
       abi: UnwrappedCurrency
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -231,7 +231,7 @@ dataSources:
     source:
       address: "address9"
       abi: WrappedCurrency
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -251,7 +251,7 @@ dataSources:
     source:
       address: "address10"
       abi: WrappedCurrency
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -271,7 +271,7 @@ dataSources:
     source:
       address: "address11"
       abi: WrappedCurrency
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -291,7 +291,7 @@ dataSources:
     source:
       address: "address12"
       abi: CryptoSealsGuildFame
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -314,7 +314,7 @@ dataSources:
     source:
       address: "address13"
       abi: CryptoSealsGuilds
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -363,7 +363,7 @@ dataSources:
     source:
       address: "address14"
       abi: CryptoSealsChests
-      startBlock: 5209275
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
