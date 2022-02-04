@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: CryptoSealsSummoners
-    network: fuji
+    network: cryptoseals
     source:
       address: "address"
       abi: CryptoSealsSummoners
@@ -52,7 +52,7 @@ dataSources:
       file: ./src/summoner.ts
   - kind: ethereum
     name: CryptoSealsSummonersWorldBoss
-    network: fuji
+    network: cryptoseals
     source:
       address: "address2"
       abi: CryptoSealsSummonersWorldBoss
@@ -89,7 +89,7 @@ dataSources:
       file: ./src/worldboss.ts
   - kind: ethereum
     name: CryptoSealsSkills
-    network: fuji
+    network: cryptoseals
     source:
       address: "address3"
       abi: CryptoSealsSkills
@@ -109,7 +109,7 @@ dataSources:
       file: ./src/skills.ts
   - kind: ethereum
     name: CryptoSealsSummonerAttributes
-    network: fuji
+    network: cryptoseals
     source:
       address: "address4"
       abi: CryptoSealsSummonerAttributes
@@ -135,7 +135,7 @@ dataSources:
       file: ./src/attributes.ts
   - kind: ethereum
     name: CryptoSealsCraftingI
-    network: fuji
+    network: cryptoseals
     source:
       address: "address5"
       abi: CryptoSealsCraftingI
@@ -158,7 +158,7 @@ dataSources:
       file: ./src/scout.ts
   - kind: ethereum
     name: CryptoSealsCraftingCommon
-    network: fuji
+    network: cryptoseals
     source:
       address: "address6"
       abi: CryptoSealsCraftingCommon
@@ -181,7 +181,7 @@ dataSources:
       file: ./src/craft_common.ts
   - kind: ethereum
     name: Essence
-    network: fuji
+    network: cryptoseals
     source:
       address: "address7"
       abi: UnwrappedCurrency
@@ -203,7 +203,7 @@ dataSources:
       file: ./src/essence.ts
   - kind: ethereum
     name: Gold
-    network: fuji
+    network: cryptoseals
     source:
       address: "address8"
       abi: UnwrappedCurrency
@@ -226,7 +226,7 @@ dataSources:
       file: ./src/gold.ts
   - kind: ethereum
     name: WEssence
-    network: fuji
+    network: cryptoseals
 
     source:
       address: "address9"
@@ -247,7 +247,7 @@ dataSources:
       file: ./src/wessence.ts
   - kind: ethereum
     name: WGold
-    network: fuji
+    network: cryptoseals
     source:
       address: "address10"
       abi: WrappedCurrency
@@ -267,7 +267,7 @@ dataSources:
       file: ./src/wgold.ts
   - kind: ethereum
     name: WMaterial
-    network: fuji
+    network: cryptoseals
     source:
       address: "address11"
       abi: WrappedCurrency
@@ -287,7 +287,7 @@ dataSources:
       file: ./src/wmat.ts
   - kind: ethereum
     name: CryptoSealsGuildFame
-    network: fuji
+    network: cryptoseals
     source:
       address: "address12"
       abi: CryptoSealsGuildFame
@@ -310,7 +310,7 @@ dataSources:
       file: ./src/fame.ts
   - kind: ethereum
     name: CryptoSealsGuilds
-    network: fuji
+    network: cryptoseals
     source:
       address: "address13"
       abi: CryptoSealsGuilds
@@ -359,7 +359,7 @@ dataSources:
       file: ./src/guilds.ts
   - kind: ethereum
     name: CryptoSealsChests
-    network: fuji
+    network: cryptoseals
     source:
       address: "address14"
       abi: CryptoSealsChests
