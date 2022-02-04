@@ -10,8 +10,8 @@ export function getGuild(id: string): Guild {
         guild.leader = null
         guild.ipfs = ""
         guild.level = BigInt.fromString("1")
-        guild.admins = new Array<BigInt>(0);
-        guild.mods = new Array<BigInt>(0);
+        guild.admins = new Array<string>(0);
+        guild.mods = new Array<string>(0);
         guild.memberCount = BigInt.fromString("0")
         guild.essenceBalance = BigInt.fromString("0")
         guild.goldBalance = BigInt.fromString("0")

@@ -7,6 +7,7 @@ import {getBoss} from "./utils/getBoss";
 import {getAttributes} from "./utils/getAttributes";
 import {getSummoner} from "./utils/getSummoner";
 import {BigInt, log} from "@graphprotocol/graph-ts";
+import {getBadge} from "./utils/getBadge";
 
 
 export function handleAttack(event: Attack): void {
@@ -28,6 +29,11 @@ export function handleLastHit(event: LastHit): void {
     const boss = getBoss(event.params.boss_id.toString());
     boss.killedBy = event.params.killer;
     boss.save()
+
+    const badge = getBadge(event.params.boss_id.toString());
+    badge.killer = event.params.killer;
+    badge.bossId = event.params.boss_id;
+    badge.save()
 }
 
 export function handleBossCreated(event: BossCreated): void {

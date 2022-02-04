@@ -5,7 +5,7 @@ import {Address} from "@graphprotocol/graph-ts";
 import {Contracts} from "./utils/constants";
 
 
-function handleTransfer (event: Transfer): void{
+export function handleTransfer (event: Transfer): void{
     const chest = getChest(event.params.tokenId.toString());
     chest.owner = event.params.to as Bytes;
     if(event.params.from == Address.zero()){
@@ -19,7 +19,7 @@ function handleTransfer (event: Transfer): void{
     chest.save()
 }
 
-function handleChestOpen(event: ChestOpen) : void{
+export function handleChestOpen(event: ChestOpen) : void{
     // TODO , EVENTE ID EKLE
     // const chest = getChest(event.toString());
 

@@ -6,6 +6,7 @@ export function getGuildApplications(id: string): SummonerGuildApplication {
     if (!application) {
         application = new SummonerGuildApplication(id);
         application.appliedTo = new Array<BigInt>(0);
+        application.guilds = new Array<string>(0)
         application.summoner = id;
     }
     return application as SummonerGuildApplication

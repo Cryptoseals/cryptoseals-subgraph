@@ -135,8 +135,8 @@ type Guild @entity {
     level: BigInt!
     leader: Summoner
     fame: BigInt!
-    admins: [BigInt!]!
-    mods: [BigInt!]!
+    admins: [Summoner!]
+    mods: [Summoner!]
     members: [Summoner!]
     memberCount: BigInt!
     goldBalance: BigInt!
@@ -149,6 +149,7 @@ type Guild @entity {
 type SummonerGuildApplication @entity {
     id: ID!
     appliedTo: [BigInt!]!
+    guilds: [Guild!]
     summoner: Summoner!
 }
 
@@ -164,4 +165,9 @@ type Contribution @entity {
     gold: BigInt!
     material: BigInt!
     guild: Guild
+}
+type Badge @entity {
+    id: ID!
+    bossId: BigInt!
+    killer: BigInt!
 }

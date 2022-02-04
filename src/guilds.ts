@@ -40,7 +40,11 @@ export function handleGuildAdminsUpdate(event: GuildAdminsUpdate): void {
     const contract = CryptoSealsGuilds.bind(Address.fromString(Contracts.Guilds))
     const admins = contract.try_guildAdmins(event.params.id);
     if (!admins.reverted) {
-        guild.admins = admins.value;
+        const newArray = new Array<string>(admins.value.length);
+        for (let i = 0; i < admins.value.length; i++) {
+            newArray[i] = admins.value[i].toString();
+        }
+        guild.admins = newArray;
     }
     guild.save()
 }
@@ -50,7 +54,11 @@ export function handleGuildModsUpdate(event: GuildModsUpdate): void {
     const contract = CryptoSealsGuilds.bind(Address.fromString(Contracts.Guilds))
     const mods = contract.try_guildMods(event.params.id);
     if (!mods.reverted) {
-        guild.admins = mods.value;
+        const newArray = new Array<string>(mods.value.length);
+        for (let i = 0; i < mods.value.length; i++) {
+            newArray[i] = mods.value[i].toString();
+        }
+        guild.mods = newArray;
     }
     guild.save()
 }
@@ -85,6 +93,9 @@ export function handleGuildCreated(event: GuildCreated): void {
         guild.members = _newMemberArray;
     }
     guild.save()
+    const summoner = getSummoner(event.params.guild.leader.toString());
+    summoner.guild = event.params.id.toString();
+    summoner.save()
 }
 
 export function handleGuildUpgraded(event: GuildUpgraded): void {
@@ -136,13 +147,21 @@ export function handleGuildUpdated(event: GuildUpdated): void {
 
 export function handleSummonerApplication(event: SummonerApplication): void {
     const applications = getGuildApplications(event.params.id.toString());
+
+    const converted = new Array<string>(event.params.guild_ids.length)
+    for (let i = 0; i < event.params.guild_ids.length; i++) {
+        converted[i] = event.params.guild_ids[i].toString()
+    }
+
     applications.appliedTo = event.params.guild_ids;
+    applications.guilds = converted;
     applications.save()
 }
 
 export function handleSummonerJoined(event: SummonerJoined): void {
     const applications = getGuildApplications(event.params.id.toString());
     applications.appliedTo = new Array<BigInt>(0);
+    applications.guilds = new Array<string>(0);
     applications.save()
     const summoner = getSummoner(event.params.id.toString())
     summoner.guild = event.params.guild_id.toString();
