@@ -36,17 +36,6 @@
     "type": "constructor"
   },
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "text",
-        "type": "string"
-      }
-    ],
-    "name": "CustomError",
-    "type": "error"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {

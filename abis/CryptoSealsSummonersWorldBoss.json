@@ -34,18 +34,7 @@
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "abc",
-        "type": "string"
-      }
-    ],
-    "name": "CustomError",
-    "type": "error"
-  },
+  }, ,
   {
     "anonymous": false,
     "inputs": [
